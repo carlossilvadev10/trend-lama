@@ -1,5 +1,5 @@
 import { CategoryType } from "@/types";
-import { Footprints, Glasses, Briefcase, Shirt, ShoppingBasket, Hand, Venus, LucideIcon } from "lucide-react";
+import { Footprints, Glasses, Briefcase, Shirt, ShoppingBasket, Hand, Venus } from "lucide-react";
 
 export const categories: CategoryType[] = [
     {

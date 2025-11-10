@@ -18,7 +18,7 @@ const product: ProductType = {
     },
 }
 
-export const generateMetada = async ({ params }: { params: { id: string } }) => {
+export const generateMetadata = async ({ params }: { params: { id: string } }) => {
     return {
         title: product.name,
         describe: product.description,

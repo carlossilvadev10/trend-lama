@@ -13,7 +13,7 @@ const PaymentForm = () => {
 
     const router = useRouter();
 
-    const handlePaymentForm: SubmitHandler<PaymentFormData> = (data) => {}
+    const handlePaymentForm: SubmitHandler<PaymentFormData> = () => {}
 
     return (
         <form className = "flex flex-col gap-4" onSubmit = {handleSubmit(handlePaymentForm)}>

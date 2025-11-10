@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TrenLama | Moda y Estilo Urbano",
+  title: "TrendLama | Moda y Estilo Urbano",
   description: "Descubre en TrenLama las últimas tendencias en ropa urbana, deportiva y casual. Compra camisetas, pantalones, zapatillas y accesorios con estilo, calidad y comodidad.",
 };
 
