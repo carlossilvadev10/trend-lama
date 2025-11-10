@@ -82,20 +82,20 @@ const AddOrder = () => {
                     <FormItem>
                         <FormLabel>Status</FormLabel>
                         <FormControl>
-                        <Select>
-                            <SelectTrigger>
-                            <SelectValue placeholder="Select a status" />
-                            </SelectTrigger>
-                            <SelectContent>
-                            <SelectItem value = "pending">Pending</SelectItem>
-                            <SelectItem value = "processing">Processing</SelectItem>
-                            <SelectItem value = "success">Success</SelectItem>
-                            <SelectItem value = "failed">Failed</SelectItem>
-                            </SelectContent>
-                        </Select>
+                            <Select onValueChange = {field.onChange} defaultValue = {field.value} >
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a status" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="pending">Pending</SelectItem>
+                                    <SelectItem value="processing">Processing</SelectItem>
+                                    <SelectItem value="success">Success</SelectItem>
+                                    <SelectItem value="failed">Failed</SelectItem>
+                                </SelectContent>
+                            </Select>
                         </FormControl>
                         <FormDescription>
-                        Enter the status of the order.
+                            Enter the status of the order.
                         </FormDescription>
                         <FormMessage />
                     </FormItem>

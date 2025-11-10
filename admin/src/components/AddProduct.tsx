@@ -160,7 +160,7 @@ const AddProduct = () => {
                         <FormItem>
                         <FormLabel>Price</FormLabel>
                         <FormControl>
-                            <Input type = "number" {...field} />
+                            <Input type="number" {...field} onChange={(e) => field.onChange(Number(e.target.value))} />
                         </FormControl>
                         <FormDescription>
                             Enter the price of the product.
@@ -176,17 +176,17 @@ const AddProduct = () => {
                         <FormItem>
                         <FormLabel>Category</FormLabel>
                         <FormControl>
-                            <Select>
-                            <SelectTrigger>
-                                <SelectValue placeholder="Select a category" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {categories.map((cat) => (
-                                <SelectItem key={cat} value = {cat}>
-                                    {cat}
-                                </SelectItem>
-                                ))}
-                            </SelectContent>
+                            <Select onValueChange={field.onChange} defaultValue={field.value} >
+                                <SelectTrigger>
+                                    <SelectValue placeholder="Select a category" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {categories.map((cat) => (
+                                    <SelectItem key={cat} value={cat}>
+                                        {cat}
+                                    </SelectItem>
+                                    ))}
+                                </SelectContent>
                             </Select>
                         </FormControl>
                         <FormDescription>
