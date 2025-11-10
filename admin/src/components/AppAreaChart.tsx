@@ -30,7 +30,7 @@ const AppAreaChart = () => {
       <ChartContainer config = {chartConfig} className = "min-h-[200px] w-full">
         <AreaChart accessibilityLayer data = {chartData}>
           <CartesianGrid vertical = {false} />
-          <XAxis dataKey = "month" tickLine = {false} tickMargin = {10} axisLine=  {false} tickFormatter={(value) => value.slice(0, 3)} />
+          <XAxis dataKey = "month" tickLine = {false} tickMargin = {10} axisLine=  {false} tickFormatter = {(value) => value.slice(0, 3)} />
           <YAxis tickLine = {false} tickMargin = {10} axisLine = {false} />
           <ChartTooltip content={<ChartTooltipContent />} />
           <ChartLegend content={<ChartLegendContent />} />

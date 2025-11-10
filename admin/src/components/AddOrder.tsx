@@ -1,37 +1,37 @@
 "use client";
 
 import {
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
 } from "@/components/ui/sheet";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from "@/components/ui/select";
 import { Button } from "./ui/button";
 
 const formSchema = z.object({
-  amount: z.number().min(1, { message: "Amount must be at least 1!" }),
-  userId: z.string().min(1, { message: "User Id is required!" }),
-  status: z.enum(["pending", "processing", "success", "failed"]),
+    amount: z.number().min(1, { message: "Amount must be at least 1!" }),
+    userId: z.string().min(1, { message: "User Id is required!" }),
+    status: z.enum(["pending", "processing", "success", "failed"]),
 });
 
 const AddOrder = () => {
@@ -48,7 +48,7 @@ const AddOrder = () => {
                 <FormField
                     control={form.control}
                     name = "amount"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>Amount</FormLabel>
                         <FormControl>
@@ -64,7 +64,7 @@ const AddOrder = () => {
                 <FormField
                     control={form.control}
                     name = "userId"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>User ID</FormLabel>
                         <FormControl>
@@ -78,7 +78,7 @@ const AddOrder = () => {
                 <FormField
                     control={form.control}
                     name = "status"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>Status</FormLabel>
                         <FormControl>

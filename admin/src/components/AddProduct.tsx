@@ -108,7 +108,7 @@ const AddProduct = () => {
                     <FormField
                     control={form.control}
                     name = "name"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                         <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
@@ -124,7 +124,7 @@ const AddProduct = () => {
                     <FormField
                     control={form.control}
                     name = "shortDescription"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                         <FormItem>
                         <FormLabel>Short Description</FormLabel>
                         <FormControl>
@@ -140,7 +140,7 @@ const AddProduct = () => {
                     <FormField
                     control={form.control}
                     name = "description"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                         <FormItem>
                         <FormLabel>Description</FormLabel>
                         <FormControl>
@@ -156,7 +156,7 @@ const AddProduct = () => {
                     <FormField
                     control={form.control}
                     name = "price"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                         <FormItem>
                         <FormLabel>Price</FormLabel>
                         <FormControl>
@@ -172,7 +172,7 @@ const AddProduct = () => {
                     <FormField
                     control={form.control}
                     name = "category"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                         <FormItem>
                         <FormLabel>Category</FormLabel>
                         <FormControl>
@@ -199,7 +199,7 @@ const AddProduct = () => {
                     <FormField
                     control={form.control}
                     name = "sizes"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                         <FormItem>
                         <FormLabel>Sizes</FormLabel>
                         <FormControl>
@@ -237,7 +237,7 @@ const AddProduct = () => {
                     <FormField
                     control={form.control}
                     name = "colors"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                         <FormItem>
                         <FormLabel>Colors</FormLabel>
                         <FormControl>

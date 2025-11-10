@@ -1,6 +1,14 @@
 # 👔 TrendLama · Moda con Estilo 🛍️
 
-[![TrendLama](./public/image-preview.png)](https://trend-lama.vercel.app/)
+## 🎯 Demos en Vivo
+
+### Panel de Administración
+[![TrendLama Admin](./admin/public/image-preview.png)](https://trend-lama-admin.vercel.app/)
+
+### Tienda Online
+[![TrendLama Client](./client/public/image-preview.png)](https://trend-lama-client.vercel.app/)
+
+---
 
 Bienvenido a **TrendLama**, tu plataforma de e-commerce moderna para descubrir las últimas tendencias en moda.
 Creemos en la **elegancia, la calidad y la experiencia de usuario** como pilares fundamentales para ofrecer la mejor experiencia de compra online.
@@ -60,18 +68,24 @@ Nuestro objetivo es **ofrecer una experiencia de compra excepcional** con produc
 ---
 
 ## 📁 Estructura del Proyecto
-
 ```
 trend-lama/
-├── admin/          # Panel de administración
-│   ├── components/ # Componentes reutilizables
-│   ├── app/        # Páginas y rutas
-│   └── lib/        # Utilidades y configuración
+├── admin/              # Panel de administración
+│   ├── public/         # Archivos estáticos (imágenes, iconos)
+│   └── src/
+│       ├── app/        # Páginas y rutas de Next.js
+│       ├── components/ # Componentes reutilizables del admin
+│       ├── hooks/      # Custom hooks de React
+│       └── lib/        # Utilidades y configuración
 │
-└── client/         # Tienda online
-    ├── components/ # Componentes del cliente
-    ├── app/        # Páginas de la tienda
-    └── lib/        # Configuración del cliente
+└── client/             # Tienda online
+    ├── public/         # Archivos estáticos (imágenes de productos)
+    └── src/
+        ├── app/        # Páginas de la tienda
+        ├── components/ # Componentes del cliente
+        ├── data/       # Datos de productos y categorías
+        ├── stores/     # Estado global (Zustand)
+        └── types.ts    # Definiciones de tipos TypeScript
 ```
 
 ---
@@ -129,9 +143,6 @@ trend-lama/
 
 ---
 
-## 📸 Capturas de Pantalla
-
----
 
 ## 📩 Contacto
 

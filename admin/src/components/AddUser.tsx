@@ -53,7 +53,7 @@ const AddUser = () => {
                 <FormField
                     control={form.control}
                     name = "fullName"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>Full Name</FormLabel>
                         <FormControl>
@@ -67,7 +67,7 @@ const AddUser = () => {
                 <FormField
                     control={form.control}
                     name = "email"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>Email</FormLabel>
                         <FormControl>
@@ -83,7 +83,7 @@ const AddUser = () => {
                 <FormField
                     control={form.control}
                     name = "phone"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>Phone</FormLabel>
                         <FormControl>
@@ -99,7 +99,7 @@ const AddUser = () => {
                 <FormField
                     control={form.control}
                     name = "address"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>Address</FormLabel>
                         <FormControl>
@@ -115,7 +115,7 @@ const AddUser = () => {
                 <FormField
                     control={form.control}
                     name = "city"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>City</FormLabel>
                         <FormControl>

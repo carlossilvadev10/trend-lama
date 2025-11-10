@@ -39,7 +39,7 @@ const AddCategory = () => {
                 <FormField
                     control={form.control}
                     name = "name"
-                    render={({ field }) => (
+                    render = {({ field }) => (
                     <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>

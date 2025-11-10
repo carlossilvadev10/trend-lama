@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { ProductType } from "@/types";
 import ProductInteraction from "@/components/ProductInteraction";
+import { Metadata } from "next";
 
 const product: ProductType = {
     id: 1,
@@ -18,17 +19,24 @@ const product: ProductType = {
     },
 }
 
-export const generateMetadata = async ({ params }: { params: { id: string } }) => {
+export const generateMetadata = async ({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> => {
+    const { id } = await params; // ✅ Usar await
+
     return {
         title: product.name,
-        describe: product.description,
+        description: product.description, // ✅ Corregido: era "describe"
     }
 }
 
-const ProductPage = async ({ params, searchParams }: { params: Promise<{ id: string }>, searchParams: Promise<{ size: string; color: string; }> }) => {
-    const {size, color} = await searchParams;
-    const selectedSize = (size || product.sizes[0] as string);
-    const selectedColor = (color || product.colors[0] as string);
+const ProductPage = async ({ params, searchParams }: {
+    params: Promise<{ id: string }>, 
+    searchParams: Promise<{ size?: string; color?: string }> // ✅ Opcionales con ?
+}) => {
+    const { id } = await params; // ✅ Agregar await para params
+    const { size, color } = await searchParams; // ✅ Ya estaba correcto
+
+    const selectedSize = (size || product.sizes[0]) as string;
+    const selectedColor = (color || product.colors[0]) as string;
 
     return (
         <div className = "flex flex-col lg:flex-row gap-4 md:gap-12 mt-12 px-20">
