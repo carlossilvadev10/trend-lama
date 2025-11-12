@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { ShoppingCart, Truck, CreditCard, ArrowRight, Trash2 } from "lucide-react";
 import { ShippingFormData } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -10,40 +10,26 @@ import Image from "next/image";
 import useCartStore from "@/stores/cartStore";
 
 const steps = [
-    {
-        id: 1,
-        title: "Carrito",
-        icon: ShoppingCart,
-    },
-    {
-        id: 2,
-        title: "Envío",
-        icon: Truck,
-    },
-    {
-        id: 3,
-        title: "Pago",
-        icon: CreditCard,
-    },
-]
+    { id: 1, title: "Carrito", icon: ShoppingCart },
+    { id: 2, title: "Envío", icon: Truck },
+    { id: 3, title: "Pago", icon: CreditCard },
+];
 
-const CartPage = () => {
+function CartContent() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const activeStep = parseInt(searchParams.get("step") || "1");
     const [shippingForm, setShippingForm] = useState<ShippingFormData>();
-    const {cart, removeFromCart} = useCartStore();
+    const { cart, removeFromCart } = useCartStore();
 
     return (
         <div className = "flex flex-col items-center justify-center gap-8 mt-12 px-10 sm:px-20">
-            <h2 className = "text-2xl font-medium">
-                Tu carrito de compras
-            </h2>
+            <h2 className = "text-2xl font-medium">Tu carrito de compras</h2>
             <div className = "flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
                 {
                     steps.map((step) => (
                         <div key = {step.id} className = {`flex items-center gap-2 border-b-2 pb-4 ${step.id === activeStep ? "border-gray-800" : "border-gray-400"}`}>
-                            <div className = {`flex items-center justify-center ${step.id === activeStep ? "bg-gray-800" : "bg-gray-400"} w-6 h-6 rounded-full text-white p-4`}>
+                            <div className = {`flex items-center justify-center ${ step.id === activeStep ? "bg-gray-800" : "bg-gray-400" } w-6 h-6 rounded-full text-white p-4`}>
                                 {step.id}
                             </div>
                             <p className = {`flex items-center justify-center gap-2 text-sm font-medium ${step.id === activeStep ? "text-gray-800" : "text-gray-400"}`}>
@@ -62,16 +48,14 @@ const CartPage = () => {
                     {
                         activeStep === 1 ? (
                             cart.map((item) => (
-                                <div key = {item.id + item.selectedSize + item.selectedColor} className = "flex items-center justify-between">
+                                <div key = {item.id + item.selectedSize + item.selectedColor} className = "flex items-center justify-between" >
                                     <div className = "flex gap-8">
                                         <div className = "relative w-32 h-32 bg-gray-50 rounded-lg overflow-hidden">
                                             <Image src = {item.images[item.selectedColor]} alt = {item.name} fill className = "object-contain" />
                                         </div>
                                         <div className = "flex flex-col justify-between">
                                             <div className = "flex flex-col gap-2">
-                                                <p className = "text-sm font-medium">
-                                                    {item.name}
-                                                </p>
+                                                <p className = "text-sm font-medium">{item.name}</p>
                                                 <p className = "text-xs text-gray-500">
                                                     Cantidad: {item.quantity}
                                                 </p>
@@ -92,45 +76,48 @@ const CartPage = () => {
                                     </button>
                                 </div>
                             ))
-                        ) : activeStep === 2 ? <ShippingForm setShippingForm = {setShippingForm} /> : activeStep === 3 && shippingForm ? <PaymentForm /> : <p className = "text-sm text-gray-500">Por favor, complete el formulario de envío para continuar.</p>
+                        ) : activeStep === 2 ? (
+                            <ShippingForm setShippingForm={setShippingForm} />
+                        ) : activeStep === 3 && shippingForm ? (
+                            <PaymentForm />
+                        ) : (
+                            <p className = "text-sm text-gray-500">
+                            Por favor, complete el formulario de envío para continuar.
+                            </p>
+                        )
                     }
                 </div>
+                {/* Columna derecha */}
                 <div className = "flex flex-col gap-8 w-full lg:w-5/12 shadow-lg border-1 border-gray-100 p-8 rounded-lg h-max">
                     <h2 className = "font-semibold">
                         Detalles de compra
                     </h2>
                     <div className = "flex flex-col gap-4">
                         <div className = "flex justify-between text-sm">
-                            <p className = "text-gray-500">
-                                Subtotal
-                            </p>
+                            <p className = "text-gray-500">Subtotal</p>
                             <p className = "font-medium">
-                                S/. {cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
+                                S/.{" "}
+                                {cart
+                                .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                                .toFixed(2)}
                             </p>
                         </div>
                         <div className = "flex justify-between text-sm">
-                            <p className = "text-gray-500">
-                                Descuento (10%)
-                            </p>
-                            <p className = "font-medium">
-                                S/. 10
-                            </p>
+                            <p className = "text-gray-500">Descuento (10%)</p>
+                            <p className = "font-medium">S/. 10</p>
                         </div>
                         <div className = "flex justify-between text-sm">
-                            <p className = "text-gray-500">
-                                Tarifa de envío
-                            </p>
-                            <p className = "font-medium">
-                                S/. 10
-                            </p>
+                            <p className = "text-gray-500">Tarifa de envío</p>
+                            <p className = "font-medium">S/. 10</p>
                         </div>
                         <hr className = "border-gray-200" />
                         <div className = "flex justify-between">
-                            <p className = "text-gray-800 font-semibold">
-                                Total
-                            </p>
+                            <p className = "text-gray-800 font-semibold">Total</p>
                             <p className = "font-medium">
-                                S/. {cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}
+                                S/.{" "}
+                                {cart
+                                .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                                .toFixed(2)}
                             </p>
                         </div>
                     </div>
@@ -145,7 +132,13 @@ const CartPage = () => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default CartPage;
+export default function CartPage() {
+    return (
+        <Suspense fallback = {<p>Cargando carrito...</p>}>
+            <CartContent />
+        </Suspense>
+    );
+}
