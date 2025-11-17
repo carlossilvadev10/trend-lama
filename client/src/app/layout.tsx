@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,8 +31,11 @@ export default function RootLayout({
       <body className = {`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <div className = "mx-auto max-w-[1600px]">
           <Navbar />
-          {children}
+          <main className = "pt-22">
+            {children}
+          </main>
           <Footer />
+          <ScrollToTop />
         </div>
         <ToastContainer position = "bottom-right" />
       </body>
