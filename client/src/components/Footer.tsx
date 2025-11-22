@@ -16,7 +16,7 @@ const Footer = () => {
                     © {new Date().getFullYear()} Trendlama.
                 </p>
                 <p className = "text-sm text-gray-400">
-                    Todos los derechos reservados.
+                    Todos los derechos reservados. <a href="https://github.com/carlossilvadev10" target = "_blank" rel = "noopener noreferrer" className = "font-semibold">carlossilvadev10</a>
                 </p>
             </div>
             <div className = "flex flex-col items-center md:items-start gap-4 text-sm text-gray-400">
