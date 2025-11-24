@@ -33,7 +33,7 @@ const Navbar = () => {
                 </Link>
                 <Bell className = "w-4 h-4 text-gray-600" />
                 <ShoppingCartIcon />
-                <Link href = "/login">
+                <Link href = "/login" className = "px-2 py-1 bg-amber-400 hover:bg-amber-500 transition-all duration-300 rounded-md">
                     Iniciar sesión
                 </Link>
             </div>
